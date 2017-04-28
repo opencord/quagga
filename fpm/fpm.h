@@ -129,9 +129,10 @@ typedef struct fpm_msg_hdr_t_
 } fpm_msg_hdr_t;
 
 /*
- * The current version of the FPM protocol is 1.
+ * Bump protocol version to 32 to indicate this includes the
+ * ONOS protocol extensions.
  */
-#define FPM_PROTO_VERSION 1
+#define FPM_PROTO_VERSION 32
 
 typedef enum fpm_msg_type_e_ {
   FPM_MSG_TYPE_NONE = 0,
@@ -141,6 +142,14 @@ typedef enum fpm_msg_type_e_ {
    * message.
    */
   FPM_MSG_TYPE_NETLINK = 1,
+  FPM_MSG_TYPE_PROTOBUF = 2,
+
+  /*
+   * Periodic keepalive message. This message is sent periodically by
+   * the FPM client to give the server an indication that the client
+   * is still alive. The message has no content.
+   */
+  FPM_MSG_TYPE_KEEPALIVE = 32,
 } fpm_msg_type_e;
 
 /*
