@@ -1,3 +1,25 @@
+
+This is a fork of the Quagga project that includes patches for connecting to
+ONOS via the FPM protocol.
+
+See branches for patched code targeting different ONOS versions:
+ onos-1.10 branch for ONOS 1.10.x releases
+ onos-1.11 branch for ONOS 1.11.x and newer releases
+
+This repo also includes a Dockerfile that can be used to build a docker image
+of quagga (currently supporting zebra + bgpd only).
+
+Building the image:
+ docker build -t quagga-fpm .
+
+Running the image:
+ sudo docker run --privileged -d -v $VOLUME:/etc/quagga -n quagga quagga-fpm
+
+where $VOLUME is a directory containing the bgpd.conf and zebra.conf config files.
+
+
+=========
+
 Quagga is free software that manages various IPv4 and IPv6 routing
 protocols.
 
